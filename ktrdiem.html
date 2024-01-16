@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    function grading() {
+        var name = document.forms["frm_grader"]["txt_name"].value;
+        var score = parseInt(document.forms["frm_grader"]["txt_score"].value);
+
+        var string_grade = "";
+        if (!isNaN(score) && score >= 0 && score <= 100) {
+            if (score > 90)
+                string_grade = "Excellence";
+            else if (score > 80)
+                string_grade = "Very Good";
+            else if (score > 60)
+                string_grade = "Fair";
+            else if (score > 50)
+                string_grade = "Hold";
+            else
+                string_grade = "Fail";
+        } else {
+            string_grade = "Score must be a number between 0 and 100!";
+        }
+        
+        document.getElementById("txt_grader").innerHTML = name + "'s grade is: <b>" + string_grade + "</b>";
+    }
+</script>
+
+<form name="frm_grader" action="" method="post">
+    <table>
+        <tr>
+            <td><label>Input Student Name:</label></td>
+            <td><input type="text" name="txt_name" value="" /></td>
+        </tr>
+        <tr>
+            <td><label>Input Score:</label></td>
+            <td><input type="text" name="txt_score" value="" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" name="btn_grader" onclick="grading()" value="Define Grade"></td>
+        </tr>
+    </table>
+</form>
+
+<div id='txt_grader'> </div>
+
+</body>
+</html>
